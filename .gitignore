@@ -1,0 +1,24 @@
+# ESP-IDF build output
+/build/
+/sdkconfig
+/sdkconfig.old
+# sdkconfig.defaults IS tracked -- it carries CONFIG_NN_ANSI_C=y, without
+# which the simulation faults on esp-nn's S3 assembly kernels.
+
+# Components fetched by the IDF component manager (esp-dsp, esp-nn,
+# esp-tflite-micro). Restored from dependencies.lock on the next build.
+/managed_components/
+
+# Benchmark run logs
+benchmark-*.log
+
+# Model generation venv / artifacts
+/model/__pycache__/
+*.pyc
+
+# Never commit the Wokwi CI token
+.env
+wokwi.env
+*.token
+
+.DS_Store

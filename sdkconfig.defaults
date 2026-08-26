@@ -1,0 +1,13 @@
+CONFIG_IDF_TARGET="esp32s3"
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_240=y
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=8192
+CONFIG_FREERTOS_HZ=1000
+CONFIG_ESP_TASK_WDT_INIT=n
+# ponytail: no PSRAM on purpose -- the <=256 KB claim must hold in internal SRAM
+
+# esp-nn defaults to ESP32-S3 assembly kernels that use S3 SIMD/DSP
+# instructions Wokwi does not emulate -> IllegalInstruction inside Invoke().
+# ANSI-C reference kernels are the only ones that RUN in simulation.
+# CONSEQUENCE: measured inference time is PESSIMISTIC. Real hardware uses the
+# assembly path and will be substantially faster. Flip this OFF on real silicon.
+CONFIG_NN_ANSI_C=y

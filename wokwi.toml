@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = 'build/kws.bin'
+elf = 'build/kws.elf'
